@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Spells"
+		 width="100%">
+
+	<s:VGroup width="100%">
+		<mx:Form width="100%">
+			<mx:FormHeading label="Spell Slots" />
+			
+			<mx:FormItem label="Air" width="100%">
+				<s:HGroup width="100%">
+					<s:HSlider id="airSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
+					<s:Label text="{airSlots.value.toString()}" />
+					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+				</s:HGroup>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Earth" width="100%">
+				<s:HGroup width="100%">
+					<s:HSlider id="earthSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
+					<s:Label text="{earthSlots.value.toString()}" />
+					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+				</s:HGroup>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Fire" width="100%">
+				<s:HGroup width="100%">
+					<s:HSlider id="fireSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
+					<s:Label text="{fireSlots.value.toString()}" />
+					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+				</s:HGroup>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Water" width="100%">
+				<s:HGroup width="100%">
+					<s:HSlider id="waterSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
+					<s:Label text="{waterSlots.value.toString()}" />
+					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+				</s:HGroup>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Void" width="100%">
+				<s:HGroup width="100%">
+					<s:HSlider id="voidSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
+					<s:Label text="{voidSlots.value.toString()}" />
+					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+				</s:HGroup>
+			</mx:FormItem>
+		</mx:Form>
+		
+		<mx:Form width="100%">
+			<mx:FormHeading label="Spell List" />
+			
+			<mx:FormItem label="Name" width="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:TextInput width="100%" />
+					<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" />
+					<s:Label text="M.Level" width="50"/>
+					<s:TextInput width="50%" />
+				</s:HGroup>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Element" width="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:TextInput width="100%" />
+					<s:Label text="Duration" width="50"/>
+					<s:TextInput width="50%" />
+				</s:HGroup>
+			</mx:FormItem>
+	
+			<mx:FormItem label="Area" width="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:TextInput width="100%" />
+					<s:Label text="Range" width="50" />
+					<s:TextInput width="50%" />
+				</s:HGroup>
+			</mx:FormItem>
+	
+			<mx:FormItem width="100%" label="Effect">
+				<s:TextArea width="100%" height="50" />
+			</mx:FormItem>
+	
+			<mx:FormItem width="100%">
+				<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" />
+			</mx:FormItem>
+			
+		</mx:Form>
+	</s:VGroup>
+</s:Panel>

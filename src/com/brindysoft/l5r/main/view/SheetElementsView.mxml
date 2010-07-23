@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 height="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.messages.SelectSheetElementMessage;
+			
+			[MessageDispatcher]
+			public var dispatchMessage:Function;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
+
+	<s:VGroup width="100%">
+		<s:Button width="100%" label="Basic Details" click="dispatchMessage(new SelectSheetElementMessage(0))" />
+		<s:Button width="100%" label="Personal Information"  click="dispatchMessage(new SelectSheetElementMessage(1))" />
+		<s:Button width="100%" label="Stats" click="dispatchMessage(new SelectSheetElementMessage(2))" />
+		<s:Button width="100%" label="Initiative" click="dispatchMessage(new SelectSheetElementMessage(3))" />
+		<s:Button width="100%" label="Armor" click="dispatchMessage(new SelectSheetElementMessage(4))" />
+		<s:Button width="100%" label="Wounds" click="dispatchMessage(new SelectSheetElementMessage(5))" />
+		<s:Button width="100%" label="Skills" click="dispatchMessage(new SelectSheetElementMessage(6))" />
+		<s:Button width="100%" label="Weapons" click="dispatchMessage(new SelectSheetElementMessage(7))" />
+		<s:Button width="100%" label="Advantages" click="dispatchMessage(new SelectSheetElementMessage(8))" />
+		<s:Button width="100%" label="Disadvantages" click="dispatchMessage(new SelectSheetElementMessage(9))" />
+		<s:Button width="100%" label="Techniques" click="dispatchMessage(new SelectSheetElementMessage(10))" />
+		<s:Button width="100%" label="Kata" click="dispatchMessage(new SelectSheetElementMessage(11))" />
+		<s:Button width="100%" label="ShugenjaTechniques" click="dispatchMessage(new SelectSheetElementMessage(12))" />
+		<s:Button width="100%" label="Spells" click="dispatchMessage(new SelectSheetElementMessage(13))" />
+	</s:VGroup>
+	
+</s:VGroup>

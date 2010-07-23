@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Weapons" width="100%">
+	
+	<s:VGroup width="100%">
+		
+		<mx:Grid width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
+			
+			<mx:GridRow width="100%">
+				
+				<mx:GridItem>
+					<s:Label text="Weapon Type" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:Label text="Attack" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:Label text="Damage" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:Label text="Bonus" />
+				</mx:GridItem>
+	
+			</mx:GridRow>
+	
+			<mx:GridRow width="100%">
+				
+				<mx:GridItem width="100%">
+					<s:TextInput width="100%" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:TextInput width="50" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:TextInput width="50" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:TextInput width="50" />
+				</mx:GridItem>
+	
+				<mx:GridItem>
+					<s:HGroup>
+						<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" />
+						<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+					</s:HGroup>
+				</mx:GridItem>
+			</mx:GridRow>
+			
+			<mx:GridRow>
+				<mx:GridItem colSpan="5">
+					<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" />
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+		
+		<mx:Grid width="100%" paddingLeft="10" paddingRight="10">
+			<mx:GridRow width="100%">
+				<mx:GridItem>
+					<s:Label text="Arrow Type" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:Label text="Damage" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:Label text="Quantity" />
+				</mx:GridItem>
+				
+			</mx:GridRow>
+			
+			<mx:GridRow width="100%">
+				<mx:GridItem width="100%">
+					<s:TextInput width="100%" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:TextInput width="50" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:TextInput width="50" />
+				</mx:GridItem>
+				
+				<mx:GridItem>
+					<s:HGroup>
+						<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" />
+						<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
+					</s:HGroup>
+				</mx:GridItem>
+				
+			</mx:GridRow>
+			
+			<mx:GridRow>
+				<mx:GridItem colSpan="5">
+					<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" />
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+	
+	</s:VGroup>
+	
+</s:Panel>

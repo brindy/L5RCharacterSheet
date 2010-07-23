@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   xmlns:spicefactory="http://www.spicefactory.org/parsley"
+					   xmlns:view="com.brindysoft.l5r.view.*"
+					   xmlns:main="com.brindysoft.l5r.view.main.*" 
+					   xmlns:view1="com.brindysoft.l5r.main.view.*"
+					   backgroundColor="#222222"
+					   invoke="invokeHandler(event)"
+					   >
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.config.MainConfig;
+			
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			
+			import mx.controls.Alert;
+			
+			protected function invokeHandler(event:InvokeEvent):void
+			{
+				if (event.arguments && event.arguments.length > 0) {
+					main.sheet.load(event.arguments[0]);
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:ContextBuilder config="{MainConfig}" />
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
+	<s:Scroller width="100%" height="100%">
+		<view1:MainView id="main" />
+	</s:Scroller>
+	
+</s:WindowedApplication>

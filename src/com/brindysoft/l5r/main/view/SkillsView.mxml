@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel
+		 xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"  
+		 xmlns:containers="com.arc90.flexlib.containers.*"
+		 title="Skills" width="100%" xmlns:components="com.brindysoft.l5r.view.components.*" xmlns:components1="com.brindysoft.l5r.main.view.components.*">
+	
+	<mx:Grid width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
+		
+		<mx:GridRow width="100%">
+			
+			<mx:GridItem>
+				<s:Label text="S" toolTip="School Skill?" />
+			</mx:GridItem>
+
+			<mx:GridItem>
+				<s:Label text="Skill Name" />
+			</mx:GridItem>
+
+			<mx:GridItem>
+				<s:Label text="Rank" />
+			</mx:GridItem>
+
+			<mx:GridItem>
+				<s:Label text="Trait" />
+			</mx:GridItem>
+
+			<mx:GridItem>
+				<s:Label text="Roll" />
+			</mx:GridItem>
+
+			<mx:GridItem width="100%">
+				<s:Label text="Emphasis" />
+			</mx:GridItem>
+
+			<mx:GridItem>
+				<s:Label text="Actions" />
+			</mx:GridItem>
+
+		</mx:GridRow>
+
+		<components1:SkillsRow />
+		
+		<mx:GridRow>
+			
+			<mx:GridItem colSpan="5">
+				<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" />
+			</mx:GridItem>
+			
+		</mx:GridRow>
+
+	</mx:Grid>
+	
+</s:Panel>

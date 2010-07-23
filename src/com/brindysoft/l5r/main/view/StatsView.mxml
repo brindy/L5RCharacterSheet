@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Stats"
+		 width="100%">
+	
+	<s:VGroup width="100%">
+		
+		<s:HGroup width="100%">
+			
+			<mx:Form>
+				<mx:FormItem label="Stamina" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Willpower" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Strength" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Perception" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+			</mx:Form>
+			
+			
+			<mx:Form >
+				<mx:FormItem label="Reflexes" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Awareness" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Agility" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Intelligence" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+			</mx:Form>
+		</s:HGroup>
+		
+		<s:HGroup width="100%">
+			<mx:Form >
+				<mx:FormItem label="Earth" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Air" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Water" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Fire" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Void" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+			</mx:Form>
+		
+			<mx:Form >
+				<mx:FormItem label="Honor" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Glory" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Status" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')"  buttonMode="true"/></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Shadowland Taint" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Void Spent" >
+					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				</mx:FormItem>
+			</mx:Form>
+			
+		</s:HGroup>
+		
+	</s:VGroup>
+	
+</s:Panel>
