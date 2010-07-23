@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			
+			[Bindable][Inject]
+			public var sheet:CharacterSheetController;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
+	
+	<s:HGroup width="100%" verticalAlign="bottom">
+		<mx:Form width="100%">
+			<mx:FormItem label="Name" width="100%">
+				<s:HGroup width="100%">
+					<s:TextInput id="nameInput" width="100%" text="@{sheet.currentSheet.name}" change="sheet.dirty = true"
+								 errorString="{sheet.dirty ? 'Unsaved' : null}"/>
+					<s:Button label="Save" click="sheet.save()" enabled="{sheet.canSave}" />
+					<s:Button label="Save As..." click="sheet.saveAs()" enabled="{sheet.canSaveAs}"/>
+					<s:Button label="Load" click="sheet.load()" />
+				</s:HGroup>
+			</mx:FormItem>
+		</mx:Form>			
+		<mx:Image source="@Embed('assets/l5r.png')" />
+	</s:HGroup>
+	
+</s:HGroup>

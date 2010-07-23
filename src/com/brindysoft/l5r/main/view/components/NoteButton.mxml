@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" 
+		  buttonMode="true"
+		  source="{noteImage}"
+		  click="showEditor()"
+		  toolTip="{_note}" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			
+			import org.spicefactory.parsley.core.context.Context;
+			
+			import spark.components.Window;
+			[Embed('/assets/icons/note_add.png')]
+			public static const noteAddImage:Class;
+
+			[Embed('/assets/icons/note_edit.png')]
+			public static const noteEditImage:Class;
+			
+			[Inject]
+			public var context:Context;
+
+			[Bindable]
+			private var noteImage:Class;
+			
+			[Bindable]
+			private var _note:String;
+			
+			private var _owner:Object;
+			
+			private var _property:String;
+			
+			private var _title:String;
+			
+			public function set noteOwner(o:Object) : void {
+				_owner = o;
+				update();				
+			}
+			
+			public function set noteProperty(s:String) : void {
+				_property = s;
+				update();
+			}
+			
+			public function set noteTitle(s:String) : void {
+				_title = s;
+			}
+			
+			private function update() : void {
+				noteImage = noteAddImage;
+				if (_owner && _property) {
+					_note = _owner[_property];
+					
+					if (_note && _note.length > 0) {
+						noteImage = noteEditImage;
+					}
+				}
+			}
+			
+			private function showEditor() : void {
+				var editor:NoteEditor = new NoteEditor();
+				editor.note = _note;
+				editor.noteOwner = _owner;
+				editor.noteProperty = _property;
+				editor.title = "Edit " + _title;
+				editor.addEventListener(CloseEvent.CLOSE, onWindowClose);
+				context.viewManager.addViewRoot(editor);
+				PopUpManager.addPopUp(editor, this.parentApplication as DisplayObject, true);
+				PopUpManager.centerPopUp(editor);
+			}
+			
+			private function onWindowClose(event:CloseEvent) : void {
+				update();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
+</mx:Image>

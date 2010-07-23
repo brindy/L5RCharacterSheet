@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:containers="com.iwobanas.containers.*"
+		 title="Armor" width="100%">
+	
+	<mx:Form width="100%">
+		
+		<mx:FormItem label="Type / Bonus" width="100%">
+			<s:TextInput width="100%" />
+		</mx:FormItem>
+		<mx:FormItem label="Reduction" width="100%" >
+			<s:TextInput  width="100%" />
+		</mx:FormItem>
+		<mx:FormItem label="Current TN" width="100%" >
+			<s:TextInput  width="100%" />
+		</mx:FormItem>
+		<mx:FormItem label="TN Bonus" width="100%" >
+			<s:TextInput  width="100%" />
+		</mx:FormItem>
+		<mx:FormItem label="Quality" width="100%" >
+			<s:TextInput  width="100%" />
+		</mx:FormItem>
+		<mx:FormItem label="Notes" width="100%" >
+			<s:TextInput  width="100%" />
+		</mx:FormItem>
+	</mx:Form>
+	
+</s:Panel>
