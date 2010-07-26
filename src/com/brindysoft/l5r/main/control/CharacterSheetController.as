@@ -12,6 +12,7 @@ package com.brindysoft.l5r.main.control
 	
 	import hr.binaria.asx3m.Asx3m;
 	import hr.binaria.asx3m.Asx3mer;
+	import hr.binaria.asx3m.mapper.IMapper;
 	
 	import mx.binding.utils.ChangeWatcher;
 	import mx.controls.Alert;
@@ -19,8 +20,10 @@ package com.brindysoft.l5r.main.control
 	import mx.events.PropertyChangeEvent;
 	import mx.utils.ObjectProxy;
 	
+	import org.spicefactory.lib.reflect.cache.DefaultReflectionCache;
+	
 	[Bindable]
-	public class CharacterSheetController
+	public class CharacterSheetController 
 	{
 		
 		public var canSave:Boolean;
@@ -34,10 +37,13 @@ package com.brindysoft.l5r.main.control
 		private var file:File;
 		
 		private var filename:String;
+		
+		private var asx3m:Asx3m;
 
 		public function CharacterSheetController()
 		{
 			this.currentSheet = new CharacterSheet();
+			asx3m = new Asx3m(Asx3mer.instance, null, new XMLMapper(), null);
 		}
 		
 		public function set dirty(o:Boolean) : void {
@@ -78,6 +84,31 @@ package com.brindysoft.l5r.main.control
 			file.addEventListener(Event.SELECT, onSaveFileSelected);
 			file.browseForSave("Save Character Sheet As...");
 		}
+		
+		public function newSheet() : void {
+			
+			if (_dirty) {
+				
+				Alert.show("Do you want to abandon your unsaved changes?",
+					"Confirm", Alert.YES | Alert.NO, null, onConfirmNew);
+				
+			} else {
+				
+				onConfirmNew();
+				
+			}
+			
+		}
+		
+		private function onConfirmNew(event:CloseEvent = null) : void {
+			if (!event || event.detail == Alert.YES) {
+			
+				file = null;
+				currentSheet = new CharacterSheet();
+				
+			}
+		}
+		
 		
 		private function onConfirmLoad(event:CloseEvent = null) : void {
 			if (!event || event.detail == Alert.YES) {
@@ -121,7 +152,9 @@ package com.brindysoft.l5r.main.control
 		 */
 		private function doSave() : String {
 			
-			var xml:XML = Asx3mer.instance.toXML(currentSheet, "L5RCharacterSheet");
+			var xml:XML = 
+				// Asx3mer.instance.toXML(currentSheet, "L5RCharacterSheet");
+				asx3m.toCustomTypedXML(currentSheet, "L5RCharacterSheet");
 			
 			try {
 	
@@ -139,18 +172,17 @@ package com.brindysoft.l5r.main.control
 		}
 		
 		private function doLoad() : String {
-			try {
+			 try {
 				var stream:FileStream = new FileStream();
 				stream.open(file, FileMode.READ);
 
 				var xml:XML = new XML(stream.readUTFBytes(stream.bytesAvailable));
-				if ("L5RCharacterSheet" == xml.name()) {
-					xml.setName("com.brindysoft.l5r.main.model.CharacterSheet");
-				}
 				
 				stream.close();
 					
-				var obj:CharacterSheet = Asx3mer.instance.fromXML(xml) as CharacterSheet;
+				var obj:CharacterSheet = 
+					//Asx3mer.instance.fromXML(xml) as CharacterSheet;
+					asx3m.fromXML(xml) as CharacterSheet;
 				
 				this.currentSheet = obj;				
 				this.canSaveAs = true;
@@ -162,4 +194,43 @@ package com.brindysoft.l5r.main.control
 		}
 		
 	}
+		
+}
+
+
+import com.brindysoft.l5r.main.model.Advantage;
+import com.brindysoft.l5r.main.model.Arrows;
+import com.brindysoft.l5r.main.model.CharacterSheet;
+import com.brindysoft.l5r.main.model.Disadvantage;
+import com.brindysoft.l5r.main.model.Kata;
+import com.brindysoft.l5r.main.model.ShugenjaTechnique;
+import com.brindysoft.l5r.main.model.Skill;
+import com.brindysoft.l5r.main.model.Spell;
+import com.brindysoft.l5r.main.model.Technique;
+import com.brindysoft.l5r.main.model.TechniqueRank;
+import com.brindysoft.l5r.main.model.Weapon;
+
+import hr.binaria.asx3m.mapper.ClassAliasingMapper;
+import hr.binaria.asx3m.mapper.DefaultMapper;
+
+class XMLMapper extends ClassAliasingMapper
+{
+	public function XMLMapper()
+	{
+		super(new DefaultMapper());
+		
+		addClassAlias("L5RCharacterSheet", CharacterSheet);
+		addClassAlias("Skill", Skill);
+		addClassAlias("Weapon", Weapon);
+		addClassAlias("Arrows", Arrows);
+		addClassAlias("Advantage", Advantage);
+		addClassAlias("Disadvantage", Disadvantage);
+		addClassAlias("Technique", Technique);
+		addClassAlias("TechniqueRank", TechniqueRank);
+		addClassAlias("Kata", Kata);
+		addClassAlias("ShugenjaTechnique", ShugenjaTechnique);
+		addClassAlias("Spell", Spell);
+		
+	}
+	
 }

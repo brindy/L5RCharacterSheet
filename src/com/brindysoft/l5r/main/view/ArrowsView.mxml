@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 xmlns:components="com.brindysoft.l5r.main.view.components.*" xmlns:spicefactory="http://www.spicefactory.org/parsley"
-		 title="Weapons" width="100%" 
-		 initialize="headerRow.visible = false; headerRow.includeInLayout = false;"
+		 xmlns:spicefactory="http://www.spicefactory.org/parsley"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%"
+		 title="Arrows"
+		 initialize="headerRow.visible = false; headerRow.includeInLayout = false;" xmlns:components="com.brindysoft.l5r.main.view.components.*" 
 		 >
 	
 	<fx:Script>
 		<![CDATA[
+			import com.brindysoft.l5r.main.control.ArrowsViewController;
 			import com.brindysoft.l5r.main.control.CharacterSheetController;
 			import com.brindysoft.l5r.main.control.SkillViewController;
-			import com.brindysoft.l5r.main.control.WeaponViewController;
+			import com.brindysoft.l5r.main.model.Arrows;
 			
 			[Bindable][Inject]
 			public var sheet:CharacterSheetController;
 			
 			[Bindable][Inject]
-			public var controller:WeaponViewController;
+			public var controller:ArrowsViewController;
 			
 		]]>
 	</fx:Script>
@@ -29,17 +30,11 @@
 	<s:VGroup width="100%">
 		
 		<mx:Grid width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
-			
 			<mx:GridRow width="100%" id="headerRow"
-						visible="{sheet.currentSheet.weapons.length > 0}"
+						visible="{sheet.currentSheet.arrows.length > 0}"
 						includeInLayout="{headerRow.visible}">
-				
 				<mx:GridItem>
-					<s:Label text="Weapon Type" />
-				</mx:GridItem>
-				
-				<mx:GridItem>
-					<s:Label text="Attack" />
+					<s:Label text="Arrow Type" />
 				</mx:GridItem>
 				
 				<mx:GridItem>
@@ -47,23 +42,21 @@
 				</mx:GridItem>
 				
 				<mx:GridItem>
-					<s:Label text="Bonus" />
+					<s:Label text="Quantity" />
 				</mx:GridItem>
-	
+				
 			</mx:GridRow>
-	
-			<mx:Repeater id="weaponRepeater" dataProvider="{sheet.currentSheet.weapons}">
-				<components:WeaponsRow weapon="{weaponRepeater.currentItem as Weapon}" />
+			
+			<mx:Repeater id="arrowsRepeater" dataProvider="{sheet.currentSheet.arrows}">
+				<components:ArrowsRow arrows="{arrowsRepeater.currentItem as Arrows}" />
 			</mx:Repeater>
 			
 			<mx:GridRow>
 				<mx:GridItem colSpan="5">
-					<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" 
-							  click="controller.addWeapon()" toolTip="Add Weapon"/>
+					<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" click="controller.addArrows()" />
 				</mx:GridItem>
 			</mx:GridRow>
 		</mx:Grid>
-	
+		
 	</s:VGroup>
-	
 </s:Panel>

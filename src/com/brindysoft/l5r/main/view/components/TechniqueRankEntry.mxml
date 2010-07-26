@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.TechniquesViewController;
+			import com.brindysoft.l5r.main.model.Technique;
+			import com.brindysoft.l5r.main.model.TechniqueRank;
+			
+			[Inject][Bindable]
+			public var controller:TechniquesViewController;
+
+			[Inject][Bindable]
+			public var sheet:CharacterSheetController;
+
+			[Bindable]
+			public var technique:Technique;
+			
+			[Bindable]
+			public var rank:TechniqueRank;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
+	<mx:FormItem label="Rank {technique.ranks.getItemIndex(rank) + 1}" width="100%">
+		<s:HGroup width="100%">
+			<s:TextInput width="100%" text="@{rank.name}" change="sheet.dirty = true"/>
+			<s:CheckBox toolTip="Learned?" selected="@{rank.learned}" change="sheet.dirty = true"/>
+			<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" toolTip="Delete this rank"
+					  click="controller.deleteRank(technique, rank)"/>
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem label="Effect" width="100%">
+		<s:TextArea width="100%" height="50" text="@{rank.effect}" change="sheet.dirty = true" />
+	</mx:FormItem>
+	
+</mx:Form>

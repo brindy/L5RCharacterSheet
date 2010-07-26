@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:GridRow xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			xmlns:s="library://ns.adobe.com/flex/spark" 
+			xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley" xmlns:components="com.brindysoft.l5r.main.view.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.SkillViewController;
+			import com.brindysoft.l5r.main.control.ArrowsViewController;
+			import com.brindysoft.l5r.main.model.Skill;
+			import com.brindysoft.l5r.main.model.Arrows;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable][Inject]
+			public var sheet:CharacterSheetController;
+			
+			[Inject]
+			public var controller:ArrowsViewController;
+			
+			[Bindable]
+			public var arrows:Arrows;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
+	
+	<mx:GridItem width="100%">
+		<s:TextInput width="100%" text="@{arrows.type}" change="sheet.dirty = true" />
+	</mx:GridItem>
+	
+	<mx:GridItem>
+		<s:NumericStepper minimum="0" maximum="999" value="@{arrows.damage}" change="sheet.dirty = true"/>
+	</mx:GridItem>
+	
+	<mx:GridItem>
+		<s:NumericStepper minimum="0" maximum="9999" value="@{arrows.quantity}" change="sheet.dirty = true"/>
+	</mx:GridItem>
+	
+	<mx:GridItem>
+		<s:HGroup>
+			<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" click="controller.deleteArrows(arrows)" />
+			<components:NoteButton noteOwner="{arrows}" noteProperty="notes" noteTitle="{arrows.type} Arrows Notes" />
+		</s:HGroup>
+	</mx:GridItem>
+	
+</mx:GridRow>

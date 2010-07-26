@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+		
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.KataViewController;
+			import com.brindysoft.l5r.main.model.Kata;
+			
+			[Inject]
+			public var sheet:CharacterSheetController;
+			
+			[Inject]
+			public var controller:KataViewController;
+			
+			[Bindable]
+			public var kata:Kata;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>	
+		<spicefactory:Configure />
+	</fx:Declarations>
+
+	<mx:FormItem width="100%" label="Name">
+		<s:HGroup width="100%">
+			<s:TextInput width="100%" text="@{kata.name}" change="sheet.dirty = true"/>
+			<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true"
+					  click="controller.deleteKata(kata)"/>				
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem label="Ring/Mastery" width="100%">
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:TextInput width="100%" text="@{kata.ringMastery}" change="sheet.dirty = true"/>
+			<s:Label text="Duration" />
+			<s:TextInput width="100%" text="@{kata.duration}" change="sheet.dirty = true"/>
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem width="100%" label="Effect">
+		<s:TextArea width="100%" height="50"  text="@{kata.effect}" change="sheet.dirty = true"/>
+	</mx:FormItem>
+	
+</mx:Form>

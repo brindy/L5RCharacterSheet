@@ -2,37 +2,45 @@
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 title="Techniques (non-Shugenja)" width="100%">
+		 xmlns:spicefactory="http://www.spicefactory.org/parsley" 
+		 xmlns:components="com.brindysoft.l5r.main.view.components.*"
+		 title="Techniques (non-Shugenja)" width="100%" 
+		 >
 
-	<mx:Form width="100%">
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.TechniquesViewController;
+			import com.brindysoft.l5r.main.model.Technique;
+			
+			[Inject][Bindable]
+			public var sheet:CharacterSheetController;
+			
+			[Inject][Bindable]
+			public var controller:TechniquesViewController;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
+	
+	<mx:VBox width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
 		
-		<mx:FormItem width="100%" label="School">
-			<s:HGroup width="100%">
-				<s:TextInput width="100%" />
-				<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" toolTip="Delete this technique" />
-				<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" toolTip="Add new technique" />
-			</s:HGroup>
-		</mx:FormItem>
+		<mx:Image id="add" source="@Embed('/assets/icons/add.png')" 
+				  horizontalAlign="right" 
+				  buttonMode="true" 
+				  toolTip="Add new technique"
+				  click="controller.addTechnique()"
+				  visible="{!sheet || !sheet.currentSheet || !sheet.currentSheet.techniques || !sheet.currentSheet.techniques.length}" 
+				  includeInLayout="{add.visible}"/>
+			
+		<mx:Repeater id="theRepeater" dataProvider="{sheet.currentSheet.techniques}">
+			<components:TechniqueEntry technique="{theRepeater.currentItem as Technique}" />
+		</mx:Repeater>
 		
-		<mx:FormItem width="100%">
-			<mx:HRule width="100%" height="1"/>
-		</mx:FormItem>
-		
-		<mx:FormItem label="Rank 1" width="100%">
-			<s:HGroup width="100%">
-				<s:TextInput width="100%" />
-				<s:CheckBox toolTip="Learned?" />
-			</s:HGroup>
-		</mx:FormItem>
-
-		<mx:FormItem label="Effect" width="100%">
-			<s:TextArea width="100%" height="50" />
-		</mx:FormItem>
-
-		<mx:FormItem width="100%">
-			<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" toolTip="Add rank" />
-		</mx:FormItem>
-		
-	</mx:Form>
+	</mx:VBox>
 	
 </s:Panel>

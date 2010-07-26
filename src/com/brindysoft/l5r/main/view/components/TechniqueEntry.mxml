@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:spicefactory="http://www.spicefactory.org/parsley" 
+		 xmlns:components="com.brindysoft.l5r.main.view.components.*"
+		 width="100%">
+		
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.TechniquesViewController;
+			import com.brindysoft.l5r.main.model.Technique;
+			import com.brindysoft.l5r.main.model.TechniqueRank;
+			
+			[Inject][Bindable]
+			public var sheet:CharacterSheetController;
+			
+			[Inject][Bindable]
+			public var controller:TechniquesViewController;
+			
+			[Bindable]
+			public var technique:Technique;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
+	
+	<mx:FormItem width="100%" label="School">
+		<s:HGroup width="100%">
+			<s:TextInput width="100%" text="@{technique.school}" change="sheet.dirty = true;" />
+			<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" toolTip="Delete this technique" 
+					  click="controller.deleteTechnique(technique)"/>
+			<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" toolTip="Add new technique"
+					  click="controller.addTechnique()"/>
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem width="100%">
+		<mx:HRule width="100%" height="1"/>
+		<mx:Image source="@Embed('/assets/icons/arrow_in.png')" buttonMode="true" 
+				  click="ranks.visible = false;"
+				  visible="{ranks.visible}" includeInLayout="{ranks.visible}"/>
+		<mx:Image source="@Embed('/assets/icons/arrow_out.png')" buttonMode="true" 
+				  click="ranks.visible = true;"
+				  visible="{!ranks.visible}" includeInLayout="{!ranks.visible}"/>
+	</mx:FormItem>
+
+	<mx:FormItem id="ranks" width="100%" label="Ranks" includeInLayout="{ranks.visible}">
+		<mx:Repeater id="theRepeater" dataProvider="{technique.ranks}">
+			<components:TechniqueRankEntry
+				technique="{technique}"
+				rank="{theRepeater.currentItem as TechniqueRank}" />		
+		</mx:Repeater>
+	</mx:FormItem>
+	
+	<mx:FormItem width="100%">
+		<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" toolTip="Add {technique.school} School rank"
+				  click="controller.addRank(technique)" />
+	</mx:FormItem>
+	
+</mx:Form>

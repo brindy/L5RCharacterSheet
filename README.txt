@@ -15,7 +15,20 @@ Copyright 2010 Christopher Brind (brindy@brindy.org.uk)
    See the License for the specific language governing permissions and
    limitations under the License.
 
+== TODO ==
+
+- Preview printable sheet
+- Print sheet
+- Save as PDF
+
 == History ==
+
+=== v0.0.2 ==
+
+- Removed initiative (to be added directly to printable sheet)
+- Removed wounds (to be added directly to printable sheet)
+- Split spells in to Spell Slots and Spell List
+- All entities are now persisted
 
 === v0.0.1 ===
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.SpellsViewController;
+			import com.brindysoft.l5r.main.model.Spell;
+			
+			import flashx.textLayout.formats.Direction;
+			
+			import mx.collections.ArrayCollection;
+
+			[Inject]
+			public var sheet:CharacterSheetController;
+			
+			[Bindable][Inject]
+			public var controller:SpellsViewController;
+			
+			[Bindable]
+			public var spell:Spell;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
+	<mx:FormItem label="Name" width="100%">
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:TextInput width="100%" text="@{spell.name}" />
+			<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" click="controller.deleteSpell(spell)" />
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem label="Element" width="100%">
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:ComboBox dataProvider="{new ArrayCollection(['Air', 'Earth', 'Fire', 'Water', 'Void'])}" 
+						selectedItem="@{spell.element}" 
+						change="sheet.dirty = true"/>
+			<s:Label text="M.Level" width="50"/>
+			<s:NumericStepper minimum="1" maximum="6"
+							  value="@{spell.masterLevel}"
+							  change="sheet.dirty = true"/>
+			<s:Label text="Keywords" />
+			<s:TextInput width="100%" toolTip="e.g. Illusion"
+						 text="@{spell.keywords}"
+						 change="sheet.dirty = true"
+						 />
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem label="Area" width="100%">
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:TextInput width="100%" text="@{spell.area}" change="sheet.dirty = true"/>
+			<s:Label text="Range" width="50" />
+			<s:TextInput width="100%" text="@{spell.range}" change="sheet.dirty = true"/>
+			<s:Label text="Duration" width="50"/>
+			<s:TextInput width="100%" text="@{spell.duration}" change="sheet.dirty = true"/>
+		</s:HGroup>
+	</mx:FormItem>
+	
+	<mx:FormItem width="100%" label="Effect">
+		<s:TextArea width="100%" height="50" text="@{spell.effect}" change="sheet.dirty = true"/>
+	</mx:FormItem>
+	
+</mx:Form>

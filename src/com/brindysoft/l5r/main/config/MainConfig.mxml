@@ -5,8 +5,20 @@
 
 	<fx:Declarations>
 		
+		<!-- Model controllers -->
 		<control:CharacterSheetController />
+		
+		<!-- View controllers -->
 		<control:MainViewController />
+		<control:SkillViewController />
+		<control:WeaponViewController />
+		<control:ArrowsViewController />
+		<control:AdvantagesViewController />
+		<control:DisadvantagesViewController />
+		<control:TechniquesViewController />
+		<control:KataViewController />
+		<control:ShugenjaViewController />
+		<control:SpellsViewController />
 		
 	</fx:Declarations>
 	

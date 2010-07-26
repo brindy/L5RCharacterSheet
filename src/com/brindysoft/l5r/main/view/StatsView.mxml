@@ -3,7 +3,23 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 title="Stats"
-		 width="100%">
+		 width="100%" xmlns:components="com.brindysoft.l5r.main.view.components.*" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			
+			[Bindable][Inject]
+			public var sheet:CharacterSheetController;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
 	
 	<s:VGroup width="100%">
 		
@@ -11,70 +27,123 @@
 			
 			<mx:Form>
 				<mx:FormItem label="Stamina" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.stamina}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="staminaNotes" noteTitle="Stamina Notes" />
+					</s:HGroup>
 				</mx:FormItem>
-				<mx:FormItem label="Willpower" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				<mx:FormItem label="Reflexes" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.reflexes}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="reflexesNotes" noteTitle="Reflexes Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Strength" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.strength}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="strengthNotes" noteTitle="Strength Notes" />
+					</s:HGroup>
 				</mx:FormItem>
-				<mx:FormItem label="Perception" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				<mx:FormItem label="Agility" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.agility}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="agilityNotes" noteTitle="Agility Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 			</mx:Form>
 			
+			<mx:Form >
+				<mx:FormItem label="Earth" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.rings.Earth}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.rings}" noteProperty="earthNotes" noteTitle="Earth Notes" />
+					</s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Air" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.rings.Air}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.rings}" noteProperty="airNotes" noteTitle="Air Notes" />
+					</s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Water" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.rings.Water}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.rings}" noteProperty="waterNotes" noteTitle="Water Notes" />
+					</s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Fire" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.rings.Fire}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.rings}" noteProperty="fireNotes" noteTitle="Fire Notes" />
+					</s:HGroup>
+				</mx:FormItem>
+				<mx:FormItem label="Void" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.rings.Void}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.rings}" noteProperty="voidNotes" noteTitle="Void Notes" />
+					</s:HGroup>
+				</mx:FormItem>
+			</mx:Form>
 			
 			<mx:Form >
-				<mx:FormItem label="Reflexes" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				<mx:FormItem label="Willpower" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.willpower}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="willpowerNotes" noteTitle="Willpower Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Awareness" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.awareness}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="awarenessNotes" noteTitle="Awareness Notes" />
+					</s:HGroup>
 				</mx:FormItem>
-				<mx:FormItem label="Agility" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+				<mx:FormItem label="Perception" >
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.perception}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="perceptionNotes" noteTitle="Perception Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Intelligence" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" value="@{sheet.currentSheet.stats.intelligence}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="intelligenceNotes" noteTitle="Intelligence Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 			</mx:Form>
 		</s:HGroup>
 		
 		<s:HGroup width="100%">
-			<mx:Form >
-				<mx:FormItem label="Earth" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
-				</mx:FormItem>
-				<mx:FormItem label="Air" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
-				</mx:FormItem>
-				<mx:FormItem label="Water" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
-				</mx:FormItem>
-				<mx:FormItem label="Fire" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
-				</mx:FormItem>
-				<mx:FormItem label="Void" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
-				</mx:FormItem>
-			</mx:Form>
-		
-			<mx:Form >
+			<mx:Form>
 				<mx:FormItem label="Honor" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" snapInterval="0.1" value="@{sheet.currentSheet.stats.honor}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="honorNotes" noteTitle="Honor Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Glory" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" snapInterval="0.1" value="@{sheet.currentSheet.stats.glory}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="gloryNotes" noteTitle="Glory Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Status" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')"  buttonMode="true"/></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" snapInterval="0.1" value="@{sheet.currentSheet.stats.status}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="statusNotes" noteTitle="Status Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Shadowland Taint" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" snapInterval="0.1" value="@{sheet.currentSheet.stats.shadowlandTaint}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="shadowlandTaintNotes" noteTitle="Shadowland Taint Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 				<mx:FormItem label="Void Spent" >
-					<s:HGroup><s:TextInput width="50" /><mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" /></s:HGroup>
+					<s:HGroup>
+						<s:NumericStepper minimum="0" maximum="999" snapInterval="0.1" value="@{sheet.currentSheet.stats.voidSpent}" change="sheet.dirty = true"/>
+						<components:NoteButton noteOwner="{sheet.currentSheet.stats}" noteProperty="voidSpentNotes" noteTitle="Void Spent Notes" />
+					</s:HGroup>
 				</mx:FormItem>
 			</mx:Form>
 			

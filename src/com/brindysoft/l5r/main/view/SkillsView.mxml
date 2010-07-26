@@ -4,11 +4,34 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"  
 		 xmlns:containers="com.arc90.flexlib.containers.*"
-		 title="Skills" width="100%" xmlns:components="com.brindysoft.l5r.view.components.*" xmlns:components1="com.brindysoft.l5r.main.view.components.*">
+		 title="Skills" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley"
+		 initialize="headerRow.visible = false; headerRow.includeInLayout = false;" xmlns:components="com.brindysoft.l5r.main.view.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.SkillViewController;
+			import com.brindysoft.l5r.main.model.Skill;
+			
+			[Bindable][Inject]
+			public var sheet:CharacterSheetController;
+			
+			[Bindable][Inject]
+			public var controller:SkillViewController;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+	
 	
 	<mx:Grid width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
 		
-		<mx:GridRow width="100%">
+		<mx:GridRow width="100%" id="headerRow"
+					visible="{sheet.currentSheet.skills.length > 0}"
+					includeInLayout="{headerRow.visible}">
 			
 			<mx:GridItem>
 				<s:Label text="S" toolTip="School Skill?" />
@@ -40,12 +63,16 @@
 
 		</mx:GridRow>
 
-		<components1:SkillsRow />
+		<mx:Repeater id="skillRepeater" dataProvider="{sheet.currentSheet.skills}">
+			<components:SkillsRow skill="{skillRepeater.currentItem as Skill}" />
+		</mx:Repeater>
 		
 		<mx:GridRow>
 			
 			<mx:GridItem colSpan="5">
-				<mx:Image source="@Embed('/assets/icons/add.png')" buttonMode="true" />
+				<mx:Image source="@Embed('/assets/icons/add.png')" 
+						  buttonMode="true" click="{controller.addSkill()}"
+						  toolTip="Add Skill"/>
 			</mx:GridItem>
 			
 		</mx:GridRow>

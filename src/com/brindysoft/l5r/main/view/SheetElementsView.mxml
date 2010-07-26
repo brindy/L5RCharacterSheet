@@ -24,17 +24,17 @@
 		<s:Button width="100%" label="Basic Details" click="dispatchMessage(new SelectSheetElementMessage(0))" />
 		<s:Button width="100%" label="Personal Information"  click="dispatchMessage(new SelectSheetElementMessage(1))" />
 		<s:Button width="100%" label="Stats" click="dispatchMessage(new SelectSheetElementMessage(2))" />
-		<s:Button width="100%" label="Initiative" click="dispatchMessage(new SelectSheetElementMessage(3))" />
-		<s:Button width="100%" label="Armor" click="dispatchMessage(new SelectSheetElementMessage(4))" />
-		<s:Button width="100%" label="Wounds" click="dispatchMessage(new SelectSheetElementMessage(5))" />
-		<s:Button width="100%" label="Skills" click="dispatchMessage(new SelectSheetElementMessage(6))" />
-		<s:Button width="100%" label="Weapons" click="dispatchMessage(new SelectSheetElementMessage(7))" />
-		<s:Button width="100%" label="Advantages" click="dispatchMessage(new SelectSheetElementMessage(8))" />
-		<s:Button width="100%" label="Disadvantages" click="dispatchMessage(new SelectSheetElementMessage(9))" />
-		<s:Button width="100%" label="Techniques" click="dispatchMessage(new SelectSheetElementMessage(10))" />
-		<s:Button width="100%" label="Kata" click="dispatchMessage(new SelectSheetElementMessage(11))" />
-		<s:Button width="100%" label="ShugenjaTechniques" click="dispatchMessage(new SelectSheetElementMessage(12))" />
-		<s:Button width="100%" label="Spells" click="dispatchMessage(new SelectSheetElementMessage(13))" />
+		<s:Button width="100%" label="Armor" click="dispatchMessage(new SelectSheetElementMessage(3))" />
+		<s:Button width="100%" label="Skills" click="dispatchMessage(new SelectSheetElementMessage(4))" />
+		<s:Button width="100%" label="Weapons" click="dispatchMessage(new SelectSheetElementMessage(5))" />
+		<s:Button width="100%" label="Arrows" click="dispatchMessage(new SelectSheetElementMessage(6))" />
+		<s:Button width="100%" label="Advantages" click="dispatchMessage(new SelectSheetElementMessage(7))" />
+		<s:Button width="100%" label="Disadvantages" click="dispatchMessage(new SelectSheetElementMessage(8))" />
+		<s:Button width="100%" label="Techniques" click="dispatchMessage(new SelectSheetElementMessage(9))" />
+		<s:Button width="100%" label="Kata" click="dispatchMessage(new SelectSheetElementMessage(10))" />
+		<s:Button width="100%" label="Shugenja" click="dispatchMessage(new SelectSheetElementMessage(11))" />
+		<s:Button width="100%" label="Spell Slots" click="dispatchMessage(new SelectSheetElementMessage(12))" />
+		<s:Button width="100%" label="Spell List" click="dispatchMessage(new SelectSheetElementMessage(13))" />
 	</s:VGroup>
 	
 </s:VGroup>

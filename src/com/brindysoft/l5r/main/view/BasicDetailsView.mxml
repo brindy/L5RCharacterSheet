@@ -2,7 +2,9 @@
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		  xmlns:s="library://ns.adobe.com/flex/spark" 
 		  xmlns:mx="library://ns.adobe.com/flex/mx"
-		  title="Basic Details" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley" xmlns:components="com.brindysoft.l5r.view.components.*" xmlns:components1="com.brindysoft.l5r.main.view.components.*">
+		  title="Basic Details" width="100%" 
+		  xmlns:spicefactory="http://www.spicefactory.org/parsley" 
+		  xmlns:components="com.brindysoft.l5r.main.view.components.*">
 	
 	<fx:Script>
 		<![CDATA[
@@ -26,31 +28,31 @@
 			<mx:FormItem label="Clan" width="100%">
 				<s:HGroup width="100%">
 					<s:TextInput width="100%" text="@{sheet.currentSheet.basicDetails.clan}" change="sheet.dirty = true" />
-					<components1:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="clanNotes" noteTitle="Clan Notes" />
+					<components:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="clanNotes" noteTitle="Clan Notes" />
 				</s:HGroup>
 			</mx:FormItem>
 			<mx:FormItem label="School" width="100%">
 				<s:HGroup width="100%">
 					<s:TextInput width="100%" text="@{sheet.currentSheet.basicDetails.school}" change="sheet.dirty = true" />
-					<components1:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="schoolNotes" noteTitle="School Notes" />
+					<components:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="schoolNotes" noteTitle="School Notes" />
 				</s:HGroup>
 			</mx:FormItem>
 			<mx:FormItem label="Rank">
 				<s:HGroup>
 					<s:NumericStepper value="@{sheet.currentSheet.basicDetails.rank}" change="sheet.dirty = true" />
-					<components1:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="rankNotes" noteTitle="Rank Notes" />
+					<components:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="rankNotes" noteTitle="Rank Notes" />
 				</s:HGroup>
 			</mx:FormItem>
 			<mx:FormItem label="XP">
 				<s:HGroup>
 					<s:NumericStepper value="@{sheet.currentSheet.basicDetails.xp}" change="sheet.dirty = true" maximum="999999999" />
-					<components1:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="xpNotes" noteTitle="XP Notes" />
+					<components:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="xpNotes" noteTitle="XP Notes" />
 				</s:HGroup>
 			</mx:FormItem>
 			<mx:FormItem label="Insight" toolTip="(Rings x10) + Skills">
 				<s:HGroup>
 					<s:NumericStepper value="@{sheet.currentSheet.basicDetails.insight}" change="sheet.dirty = true" maximum="999999999" />
-					<components1:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="insightNotes" noteTitle="Insight Notes" />
+					<components:NoteButton noteOwner="{sheet.currentSheet.basicDetails}" noteProperty="insightNotes" noteTitle="Insight Notes" />
 				</s:HGroup>
 			</mx:FormItem>
 		</mx:Form>

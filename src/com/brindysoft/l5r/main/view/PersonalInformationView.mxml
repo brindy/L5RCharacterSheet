@@ -2,32 +2,66 @@
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 title="Personal Information" width="100%">
+		 title="Personal Information" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			
+			[Bindable][Inject]
+			public var sheet:CharacterSheetController;
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<spicefactory:Configure />
+		
+	</fx:Declarations>
 	
 	<s:VGroup width="100%">
 		<s:HGroup width="100%">
 			
 			<mx:Form width="100%">
+				<fx:Script>
+					<![CDATA[
+						import mx.collections.ArrayCollection;
+					]]>
+				</fx:Script>
 				<mx:FormItem label="Sex">
-					<s:TextInput width="50" />
+					<s:ComboBox dataProvider="{new ArrayCollection(['male', 'female'])}"
+								selectedItem="@{sheet.currentSheet.personalInformation.sex}"
+								change="sheet.dirty = true"/>
 				</mx:FormItem>
 				<mx:FormItem label="Height">
-					<s:TextInput width="50" />
+					<s:TextInput width="75"
+								 text="@{sheet.currentSheet.personalInformation.height}"
+								 change="sheet.dirty = true"/>
 				</mx:FormItem>
 				<mx:FormItem label="Hair">
-					<s:TextInput width="50" />
+					<s:TextInput width="75"
+								 text="@{sheet.currentSheet.personalInformation.hair}"
+								 change="sheet.dirty = true"/>
 				</mx:FormItem>
 			</mx:Form>
 	
 			<mx:Form width="100%">
 				<mx:FormItem label="Age">
-					<s:TextInput width="50" />
+					<s:NumericStepper minimum="15"
+									  maximum="300" 
+									  value="@{sheet.currentSheet.personalInformation.age}"
+									  change="sheet.dirty = true"/>
 				</mx:FormItem>
 				<mx:FormItem label="Weight">
-					<s:TextInput width="50" />
+					<s:TextInput width="75"
+								 text="@{sheet.currentSheet.personalInformation.weight}"
+								 change="sheet.dirty = true"/>
 				</mx:FormItem>
-				<mx:FormItem label="Height">
-					<s:TextInput width="50" />
+				<mx:FormItem label="Eyes">
+					<s:TextInput width="75"
+								 text="@{sheet.currentSheet.personalInformation.eyes}"
+								 change="sheet.dirty = true"/>
 				</mx:FormItem>
 			</mx:Form>
 	
@@ -35,22 +69,34 @@
 	
 		<mx:Form width="100%">
 			<mx:FormItem label="Father" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.father}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Mother" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.mother}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Siblings" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.siblings}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Martial Status" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.maritalStatus}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Spouse" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.spouse}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Children" width="100%">
-				<s:TextInput width="100%" />
+				<s:TextInput width="100%"
+							 text="@{sheet.currentSheet.personalInformation.children}"
+							 change="sheet.dirty = true"/>
 			</mx:FormItem>
 		</mx:Form>
 	</s:VGroup>

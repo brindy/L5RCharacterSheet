@@ -2,40 +2,38 @@
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 title="Kata" width="100%" 
-		 xmlns:components="com.brindysoft.l5r.main.view.components.*" 
-		 xmlns:spicefactory="http://www.spicefactory.org/parsley">
+		 title="Shugenja Techniques" width="100%" xmlns:spicefactory="http://www.spicefactory.org/parsley" xmlns:components="com.brindysoft.l5r.main.view.components.*">
 
 	<fx:Script>
 		<![CDATA[
 			import com.brindysoft.l5r.main.control.CharacterSheetController;
-			import com.brindysoft.l5r.main.control.KataViewController;
+			import com.brindysoft.l5r.main.control.ShugenjaViewController;
 			import com.brindysoft.l5r.main.model.Kata;
 			
 			[Inject][Bindable]
 			public var sheet:CharacterSheetController;
 			
 			[Inject][Bindable]
-			public var controller:KataViewController;
+			public var controller:ShugenjaViewController;
 			
 		]]>
 	</fx:Script>
-
+	
 	<fx:Declarations>
 		
 		<spicefactory:Configure />
 		
 	</fx:Declarations>
-	
+
 	<mx:VBox width="100%" paddingLeft="10" paddingTop="5" paddingRight="10">
-		<mx:Repeater id="theRepeater" dataProvider="{sheet.currentSheet.katas}">
+		<mx:Repeater id="theRepeater" dataProvider="{sheet.currentSheet.shugenjaTechniques}">
 			
-			<components:KataEntry kata="{theRepeater.currentItem as Kata}" />
+			<components:ShugenjaEntry technique="{theRepeater.currentItem as ShugenjaTechnique}" />
 			
 		</mx:Repeater>
 		
 		<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" 
-				  click="controller.addKata()"/>
+				  click="controller.addTechnique()"/>
 	</mx:VBox>
 	
 </s:Panel>

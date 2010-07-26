@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark"  xmlns:view="com.brindysoft.l5r.view.*"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
 		 xmlns:spicefactory="http://www.spicefactory.org/parsley" xmlns:container="com.custardbelly.container.*"
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
-		 width="100%" height="100%" xmlns:main="com.brindysoft.l5r.view.main.*" xmlns:view1="com.brindysoft.l5r.main.view.*">
+		 xmlns:main="com.brindysoft.l5r.view.main.*" 
+		 xmlns:view="com.brindysoft.l5r.main.view.*"
+		 width="100%" height="100%" 
+		 >
 
 	<fx:Script>
 		<![CDATA[
@@ -11,6 +14,7 @@
 			import com.brindysoft.l5r.main.control.MainViewController;
 			
 			import mx.core.UIComponent;
+			import mx.effects.Effect;
 			import mx.events.FlexEvent;
 			
 			[Bindable][Inject]
@@ -18,8 +22,6 @@
 			
 			[Inject]
 			public var sheet:CharacterSheetController;
-			
-
 
 		]]>
 	</fx:Script>
@@ -28,35 +30,33 @@
 		
 		<spicefactory:Configure />
 		
-		<s:Fade id="hide" alphaTo="0" duration="0" />
-		<s:Move id="appear" xFrom="{width + 10}" xTo="0" disableLayout="true" />
-		<s:Move id="disappear" xTo="{width + 10}" disableLayout="true" />
-		
 	</fx:Declarations>
 
-	<view1:SheetHeaderView />
-	
+	<view:SheetHeaderView />
+		
 	<s:HGroup width="100%" paddingLeft="5" paddingRight="5">
 
-		<view1:SheetElementsView />
+		<view:SheetElementsView />
 
 		<container:CBViewStack id="stack" width="100%" selectedIndex="{controller.selectedElementIndex}"
 			backgroundColor="#222222" backgroundAlpha="0.0">
 			
-			<view1:BasicDetailsView addedEffect="{appear}" removedEffect="{disappear}" />
-			<view1:PersonalInformationView addedEffect="{appear}" removedEffect="{disappear}" />
-			<view1:StatsView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:InitiativeView addedEffect="{appear}" removedEffect="{disappear}" />
-			<view1:ArmorView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:WoundsView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:SkillsView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:WeaponsView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:AdvantagesView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:DisadvantagesView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:TechniquesView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:KataView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:ShugenjaTechniquesView addedEffect="{appear}" removedEffect="{disappear}"/>
-			<view1:SpellsView addedEffect="{appear}" removedEffect="{disappear}"/>
+			<view:BasicDetailsView/>
+			<view:PersonalInformationView/>
+			<view:StatsView/>
+			<view:ArmorView/>
+			<view:SkillsView/>
+			<view:WeaponsView/>
+			<view:ArrowsView/>
+			<view:AdvantagesView/>
+			<view:DisadvantagesView/>
+			
+			<!-- TODO ... -->
+			<view:TechniquesView/>
+			<view:KataView/>
+			<view:ShugenjaView/>
+			<view:SpellSlotView/>
+			<view:SpellsView/>
 			
 		</container:CBViewStack>
 		

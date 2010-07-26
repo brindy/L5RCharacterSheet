@@ -3,89 +3,35 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 title="Spells"
-		 width="100%">
+		 width="100%" xmlns:components="com.brindysoft.l5r.main.view.components.*" xmlns:spicefactory="http://www.spicefactory.org/parsley">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.brindysoft.l5r.main.control.CharacterSheetController;
+			import com.brindysoft.l5r.main.control.SpellsViewController;
+			import com.brindysoft.l5r.main.model.Spell;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Inject][Bindable]
+			public var sheet:CharacterSheetController;
 
-	<s:VGroup width="100%">
-		<mx:Form width="100%">
-			<mx:FormHeading label="Spell Slots" />
-			
-			<mx:FormItem label="Air" width="100%">
-				<s:HGroup width="100%">
-					<s:HSlider id="airSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
-					<s:Label text="{airSlots.value.toString()}" />
-					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
-				</s:HGroup>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Earth" width="100%">
-				<s:HGroup width="100%">
-					<s:HSlider id="earthSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
-					<s:Label text="{earthSlots.value.toString()}" />
-					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
-				</s:HGroup>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Fire" width="100%">
-				<s:HGroup width="100%">
-					<s:HSlider id="fireSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
-					<s:Label text="{fireSlots.value.toString()}" />
-					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
-				</s:HGroup>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Water" width="100%">
-				<s:HGroup width="100%">
-					<s:HSlider id="waterSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
-					<s:Label text="{waterSlots.value.toString()}" />
-					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
-				</s:HGroup>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Void" width="100%">
-				<s:HGroup width="100%">
-					<s:HSlider id="voidSlots" width="100%" snapInterval="1" minimum="0" maximum="13" liveDragging="true" />
-					<s:Label text="{voidSlots.value.toString()}" />
-					<mx:Image source="@Embed('/assets/icons/note_add.png')" buttonMode="true" />
-				</s:HGroup>
-			</mx:FormItem>
-		</mx:Form>
+			[Inject][Bindable]
+			public var controller:SpellsViewController;
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<spicefactory:Configure />
+	</fx:Declarations>
+
+	<mx:VBox width="100%" paddingLeft="10" paddingRight="10" paddingTop="5">
+		<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" click="controller.addSpell()" />
 		
-		<mx:Form width="100%">
-			<mx:FormHeading label="Spell List" />
-			
-			<mx:FormItem label="Name" width="100%">
-				<s:HGroup width="100%" verticalAlign="middle">
-					<s:TextInput width="100%" />
-					<mx:Image source="@Embed('/assets/icons/delete.png')" buttonMode="true" />
-					<s:Label text="M.Level" width="50"/>
-					<s:TextInput width="50%" />
-				</s:HGroup>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Element" width="100%">
-				<s:HGroup width="100%" verticalAlign="middle">
-					<s:TextInput width="100%" />
-					<s:Label text="Duration" width="50"/>
-					<s:TextInput width="50%" />
-				</s:HGroup>
-			</mx:FormItem>
+		<mx:Repeater id="theRepeater" dataProvider="{sheet.currentSheet.spells}">
+			<components:SpellEntry spell="{theRepeater.currentItem as Spell}" />
+		</mx:Repeater>
+	</mx:VBox>
 	
-			<mx:FormItem label="Area" width="100%">
-				<s:HGroup width="100%" verticalAlign="middle">
-					<s:TextInput width="100%" />
-					<s:Label text="Range" width="50" />
-					<s:TextInput width="50%" />
-				</s:HGroup>
-			</mx:FormItem>
-	
-			<mx:FormItem width="100%" label="Effect">
-				<s:TextArea width="100%" height="50" />
-			</mx:FormItem>
-	
-			<mx:FormItem width="100%">
-				<mx:Image source="@Embed('/assets/icons/add.png')" horizontalAlign="right" buttonMode="true" />
-			</mx:FormItem>
-			
-		</mx:Form>
-	</s:VGroup>
 </s:Panel>
